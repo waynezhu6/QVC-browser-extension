@@ -1,0 +1,12 @@
+button.current {
+  box-shadow: 0 0 0 2px white, 0 0 0 4px black;
+}
+
+.container{
+  padding-top: 10px;
+  padding-bottom: 32px;
+}
+
+.hidden{
+  display: none;
+}

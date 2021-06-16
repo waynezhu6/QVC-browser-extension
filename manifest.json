@@ -1,0 +1,24 @@
+{
+  "name": "QVC",
+  "description": "Sync video playback between friends over the network",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "popup/popup.html"
+  },
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "content/dom.js",
+        "content/handlers.js"
+      ],
+      "css": ["content/inject.css"]
+    }
+  ]
+}

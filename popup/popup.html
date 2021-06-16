@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>QVC</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <link rel="stylesheet" href="popup.css">
+
+    <script src="socket.io.min.js"></script>
+    <script src="popup.js"></script>
+    <script src="api.js"></script>
+  </head>
+
+  <body>
+
+    <div class="container is-fluid">
+
+      <div class="tabs is-centered">
+        <ul>
+          <li class="is-active"><a>Join Room</a></li>
+          <li><a>Create Room</a></li>
+        </ul>
+      </div>
+
+      <section id="join-page">
+        <div class="field">
+          <div class="control">
+            <input id="join-id" class="input" type="text" placeholder="Room ID">
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <input id="join-password" class="input" type="text" placeholder="Room Password">
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <button id="btn-join" class="button is-link is-fullwidth" onclick="onJoin()">
+              Join
+            </button>
+          </div>
+        </div>
+
+      </section>
+
+      <section id="create-page" class="hidden">
+        <div class="field">
+          <div class="control">
+            <input class="input" type="text" placeholder="Room ID">
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <input class="input" type="text" placeholder="Room Password">
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <button id="btn-select-video"class="button is-fullwidth">
+              Select Video Element
+            </button>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <button id="btn-join" class="button is-link is-fullwidth" onclick="onCreate()">
+              Create
+            </button>
+          </div>
+        </div>
+
+      </section>
+
+      <section id="control-page" class="hidden">
+        <div class="field">
+          <div class="control">
+            <input class="input" type="text" placeholder="Room ID">
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <input class="input" type="text" placeholder="Room Password">
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <button id="btn-select-video"class="button is-fullwidth" onclick="onSelectVideo()">
+              Select Video Element
+            </button>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <button id="btn-join" class="button is-link is-fullwidth">
+              Join
+            </button>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+
+  </body>
+
+</html>
