@@ -8,26 +8,30 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
     <link rel="stylesheet" href="popup.css">
 
-    <script src="socket.io.min.js"></script>
     <script src="popup.js"></script>
-    <script src="api.js"></script>
   </head>
 
   <body>
 
-    <div class="container is-fluid">
+    <div class="container is-fluid" id="login-page">
 
       <div class="tabs is-centered">
         <ul>
-          <li class="is-active"><a>Join Room</a></li>
-          <li><a>Create Room</a></li>
+          <li id="tab-btn-join" class="is-active"><a>Join Room</a></li>
+          <li id="tab-btn-create"><a>Create Room</a></li>
         </ul>
       </div>
 
-      <section id="join-page">
+      <section id="join-tab">
         <div class="field">
           <div class="control">
-            <input id="join-id" class="input" type="text" placeholder="Room ID">
+            <input id="join-room" class="input" type="text" placeholder="Room ID">
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="control">
+            <input id="join-username" class="input" type="text" placeholder="Your Username">
           </div>
         </div>
 
@@ -39,61 +43,50 @@
 
         <div class="field">
           <div class="control">
-            <button id="btn-join" class="button is-link is-fullwidth" onclick="onJoin()">
+            <button id="btn-join" class="button is-link is-fullwidth">
               Join
             </button>
           </div>
         </div>
-
       </section>
 
-      <section id="create-page" class="hidden">
+      <section id="create-tab" class="hidden">
         <div class="field">
           <div class="control">
-            <input class="input" type="text" placeholder="Room ID">
+            <input id="create-room" class="input" type="text" placeholder="Room ID">
           </div>
         </div>
 
         <div class="field">
           <div class="control">
-            <input class="input" type="text" placeholder="Room Password">
+            <input id="create-username" class="input" type="text" placeholder="Your Username">
           </div>
         </div>
 
         <div class="field">
           <div class="control">
-            <button id="btn-select-video"class="button is-fullwidth">
-              Select Video Element
-            </button>
+            <input id="create-password" class="input" type="text" placeholder="Room Password">
           </div>
         </div>
 
         <div class="field">
           <div class="control">
-            <button id="btn-join" class="button is-link is-fullwidth" onclick="onCreate()">
+            <button id="btn-create" class="button is-link is-fullwidth">
               Create
             </button>
           </div>
         </div>
-
       </section>
 
-      <section id="control-page" class="hidden">
-        <div class="field">
-          <div class="control">
-            <input class="input" type="text" placeholder="Room ID">
-          </div>
-        </div>
+    </div>
 
-        <div class="field">
-          <div class="control">
-            <input class="input" type="text" placeholder="Room Password">
-          </div>
-        </div>
+    <div class="container is-fluid hidden" id="control-page">
 
+      <section id="control-page">
+        
         <div class="field">
           <div class="control">
-            <button id="btn-select-video"class="button is-fullwidth" onclick="onSelectVideo()">
+            <button id="btn-select-video"class="button is-link is-fullwidth">
               Select Video Element
             </button>
           </div>
@@ -101,8 +94,8 @@
 
         <div class="field">
           <div class="control">
-            <button id="btn-join" class="button is-link is-fullwidth">
-              Join
+            <button id="btn-leave"class="button is-danger is-fullwidth">
+              Leave Room
             </button>
           </div>
         </div>

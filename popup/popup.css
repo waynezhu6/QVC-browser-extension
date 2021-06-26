@@ -10,3 +10,7 @@ button.current {
 .hidden{
   display: none;
 }
+
+#control-page{
+  padding-top: 16px;
+}

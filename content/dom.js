@@ -1,5 +1,9 @@
 // dom manipulating functions live here
-var player; // store video player element
+var state = {
+  username: null,
+  password: null,
+  roomname: null
+};
 
 function selectVideoElement(){
   // select a video to hook onto
@@ -31,7 +35,7 @@ function setVideoElement(elem){
   // add socket event hooks to video element
   console.log(elem);
   if(elem instanceof HTMLVideoElement){
-    elem.addEventListener('play', play);
+    elem.addEventListener('playing', play);
     elem.addEventListener('pause', pause);
     console.log('set video hooks')
   }
@@ -45,14 +49,40 @@ function resetVideoElement(elem){
   }
 }
 
-console.log("content script dom.js loaded");
+function hasSession(){
+  // return true if this page is connected to a session
+  return !!socket;
+}
 
 chrome.runtime.onMessage.addListener(
   // handle communication with popup
   function(request, sender, sendResponse){
     console.log("runtime event: " + request.action);
-    if(request.action == "select_video")
-      selectVideoElement();
-    sendResponse({});
+    console.log(request);
+
+    switch(request.action){
+      case "join_room":  {
+        let {room, username, password} = request.payload;
+        joinSession(room, username, password);
+        break;
+      }
+      case "create_room": {
+        let {room, username, password} = request.payload;
+        createSession(room, username, password);
+        break;
+      }
+      case "leave_room": {
+        leaveSession();
+        break;
+      }
+      case "select_video": {
+        selectVideoElement();
+        break;
+      }
+      case "has_session": {
+        sendResponse({hasSession: hasSession()});
+        break;
+      }
+    }
   }
 );
